@@ -1,10 +1,12 @@
 package com.abona_erp.libs.errorlog
 
+import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
 
 /**
  * Created on 06.01.2022 by Anton Kogan. Email: akogan777@gmail.com.
  */
+@kotlinx.parcelize.Parcelize
 data class ErrorLog(
     @SerializedName("AppName")
     var appName //replaced by ServiceApp.AppName while saving
@@ -71,4 +73,4 @@ data class ErrorLog(
     var serviceClientId: String?,
     @SerializedName("ClientId")
     var clientId: String?
-)
+) : Parcelable
