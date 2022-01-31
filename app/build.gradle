@@ -5,14 +5,13 @@ plugins {
 }
 
 android {
-    compileSdk 31
+    compileSdk versions.compileSdkVersion
 
     defaultConfig {
-        minSdk 21
-        targetSdk 31
-        versionCode 1
-        versionName "1.0"
-
+        minSdk versions.minSdk
+        targetSdk targetSdkVersion
+        versionCode = globalVersionCode()
+        versionName = generateVersionName()
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -29,6 +28,14 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
+}
+
+private Integer globalVersionCode() {
+    return +versions.versionMajor * 10000000 + versions.versionMinor * 10000 + versions.versionPatch
+}
+
+private String generateVersionName() {
+    return "${versions.versionMajor}.${versions.versionMinor}.${versions.versionPatch}"
 }
 
 dependencies {

@@ -53,7 +53,7 @@ class ExceptionHandler(
     }
 
 
-    private fun sendLastError() = getLastSavedError()?.let {
+    suspend fun sendLastError() = getLastSavedError()?.let {
         sendException(it)
     }
 
@@ -102,7 +102,7 @@ class ExceptionHandler(
         }
     }
 
-    fun sendException(e: ErrorLog): Result<ResponseBody?> {
+    suspend fun sendException(e: ErrorLog): Result<ResponseBody?> {
         val mime: MediaType? = "application/json; charset=utf-8".toMediaTypeOrNull()
         val json = gson.toJson(e)
         val body: RequestBody = json.toRequestBody(mime)
@@ -113,7 +113,6 @@ class ExceptionHandler(
             .build()
 
         val call: Call = client.newCall(request)
-
         return try {
             val responseBody = call.execute().body
             Log.e("ExceptionHandler", responseBody?.string() ?: "no response body: $responseBody")
