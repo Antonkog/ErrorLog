@@ -10,67 +10,67 @@ import com.google.gson.annotations.SerializedName
 data class ErrorLog(
     @SerializedName("AppName")
     var appName //replaced by ServiceApp.AppName while saving
-    : String?,
+    : String? = null,
     @SerializedName("AppVersion")
-    var appVersion: String?,
+    var appVersion: String? = null,
     @SerializedName("AppVersionInt")
     var appVersionInt: Int = 0,
     @SerializedName("ClientName")
-    var clientName: String?,
+    var clientName: String? = null,
     @SerializedName("UserInitials")
-    var userInitials: String?,//max 6 chars
+    var userInitials: String? = null,//max 6 chars
     @SerializedName("ComputerName")
-    var computerName: String?,//replaced by DeviceID
+    var computerName: String? = null,//replaced by DeviceID
     @SerializedName("SystemUser")
-    var systemUser: String?,
+    var systemUser: String? = null,
     @SerializedName("OperatingSystem")
-    var operatingSystem: String?,
+    var operatingSystem: String? = null,
     @SerializedName("SystemDomain")
-    var systemDomain: String?,
+    var systemDomain: String? = null,
     @SerializedName("IP_Address")
-    var ip: String?,
+    var ip: String? = null,
     @SerializedName("IsSendEmail")
     var isSendEmail: Boolean = false,
     @SerializedName("ExceptionSource")
-    var exceptionSource: String?,
+    var exceptionSource: String? = null,
     @SerializedName("ExceptionErrorName")
-    var exceptionErrorName: String?,
+    var exceptionErrorName: String? = null,
     @SerializedName("ExceptionExceptionType")
-    var exceptionExceptionType: String?,
+    var exceptionExceptionType: String? = null,
     @SerializedName("ExceptionExceptionReflectedType")
-    var exceptionExceptionReflectedType: String?,
+    var exceptionExceptionReflectedType: String? = null,
     @SerializedName("ExceptionErrorMessage")
-    var exceptionErrorMessage: String?,
+    var exceptionErrorMessage: String? = null,
     @SerializedName("ExceptionStackTrace")
-    var exceptionStackTrace: String?,
+    var exceptionStackTrace: String? = null,
     @SerializedName("ExceptionDetailErrorMessage")
-    var exceptionDetailErrorMessage: String?,
+    var exceptionDetailErrorMessage: String? = null,
     @SerializedName("FormName")
-    var formName: String?,
+    var formName: String? = null,
     @SerializedName("FileName")
-    var fileName: String?,
+    var fileName: String? = null,
     @SerializedName("LineOfCode")
     var lineOfCode: Int = 0,
     @SerializedName("ErrorCategory")
-    var errorCategory: ErrorCategory?,
+    var errorCategory: ErrorCategory? = ErrorCategory.NA,
     @SerializedName("ErrorCategoryText")
-    var errorCategoryText: String?,
+    var errorCategoryText: String? = "NA",
     @SerializedName("BuildType")
-    var buildType: AbonaBuildType?,
+    var buildType: AbonaBuildType? = AbonaBuildType.RELEASE,
     @SerializedName("BuildTypeText")
-    var buildTypeText: String?,
+    var buildTypeText: String? = "Release",
     @SerializedName("ErrorPriority")
-    var errorPriority: ErrorPriority?,
+    var errorPriority: ErrorPriority? = ErrorPriority.Critical,
     @SerializedName("ErrorPriorityText")
-    var errorPriorityText: String?,
+    var errorPriorityText: String? = "Critical",
     @SerializedName("AbonaMainCategory")
-    var abonaMainCategory: AbonaMainCategories?,
+    var abonaMainCategory: AbonaMainCategories? = AbonaMainCategories.Orders,
     @SerializedName("AbonaMainCategoryText")
-    var abonaMainCategoryText: String?,
+    var abonaMainCategoryText: String? = "Orders",
     @SerializedName("ServiceAppId")
-    var serviceAppId: String,
+    var serviceAppId: String? = null,
     @SerializedName("ServiceClientId")
-    var serviceClientId: String?,
+    var serviceClientId: String? = ExceptionHandler.EXCEPTION_SERVICE_ID,
     @SerializedName("ClientId")
-    var clientId: String?
+    var clientId: String? = null
 ) : Parcelable
