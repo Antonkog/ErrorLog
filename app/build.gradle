@@ -2,6 +2,7 @@ plugins {
     id 'com.android.library'
     id 'kotlin-android'
     id 'kotlin-parcelize'
+    id 'maven-publish'
 }
 
 android {
@@ -47,4 +48,34 @@ dependencies {
     implementation(platform("com.squareup.okhttp3:okhttp-bom:4.9.0"))
     // define any required OkHttp artifacts without version
     implementation("com.squareup.okhttp3:okhttp")
+
+}
+
+publishing {
+    Properties properties = new Properties()
+    def propertiesFile = project.rootProject.file('local.properties')
+    if (propertiesFile.exists()) {
+        properties.load(propertiesFile.newDataInputStream())
+    }
+    def filePath = properties.getProperty('errorLogPath')
+
+    publications {
+        ErrorLog(MavenPublication) {
+            groupId 'Abona'
+            artifactId 'ErrorLog'
+            version = generateVersionName()
+            artifact filePath
+        }
+    }
+// Repositories *to* which Gradle can publish artifacts
+    repositories {
+        maven {
+            url 'https://pkgs.dev.azure.com/ABONA/_packaging/ABONA/maven/v1'
+            credentials {
+                username "ABONA"
+                password System.getenv("SYSTEM_ACCESSTOKEN") != null ? System.getenv("SYSTEM_ACCESSTOKEN") : vstsMavenAccessToken
+            }
+        }
+    }
+
 }

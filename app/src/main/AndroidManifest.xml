@@ -1,6 +1,3 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest
-    package="com.abona_erp.libs">
-    <application/>
-
+<manifest package="com.abona_erp.libs">
 </manifest>

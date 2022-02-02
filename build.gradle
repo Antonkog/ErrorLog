@@ -3,6 +3,13 @@ buildscript {
     repositories {
         google()
         mavenCentral()
+        maven {
+            url 'https://pkgs.dev.azure.com/ABONA/_packaging/ABONA/maven/v1'
+            credentials {
+                username "ABONA"
+                password System.getenv("SYSTEM_ACCESSTOKEN") != null ? System.getenv("SYSTEM_ACCESSTOKEN") : vstsMavenAccessToken
+            }
+        }
     }
     dependencies {
         classpath "com.android.tools.build:gradle:7.0.4"
@@ -15,7 +22,7 @@ buildscript {
             'minSdk'         : 21,
             'versionMajor'   : 1,
             'versionMinor'   : 1,
-            'versionPatch'   : 2,
+            'versionPatch'   : 3,
             //versioning see  https://medium.com/@maxirosson/versioning-android-apps-d6ec171cfd82
 
             compileSdkVersion: 31,
